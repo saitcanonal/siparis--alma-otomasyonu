@@ -1,0 +1,35 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="RestaurantManager.MainWindow"
+        Title="Restoran Masa Yönetim Sistemi" Width="1150" Height="750"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Üst başlık ve genel butonlar -->
+        <DockPanel Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="Restoran Masa Yönetim Sistemi" FontSize="22" FontWeight="Bold" VerticalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right" Spacing="10">
+                <Button x:Name="BtnMenuYonetimi" Content="Menü Yönetimi" Padding="12,6" Click="BtnMenuYonetimi_Click"/>
+                <Button x:Name="BtnYeniMasa" Content="+ Masa Ekle" Padding="12,6" FontWeight="Bold" Click="BtnYeniMasa_Click"/>
+            </StackPanel>
+        </DockPanel>
+
+        <!-- Özet sayılar: kaç masa dolu / boş / rezervasyonlu -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,12" Spacing="25">
+            <TextBlock x:Name="TxtToplam" Text="Toplam Masa: 0" FontWeight="Bold" FontSize="14"/>
+            <TextBlock x:Name="TxtBos" Text="Boş: 0" Foreground="Green" FontWeight="Bold" FontSize="14"/>
+            <TextBlock x:Name="TxtDolu" Text="Dolu: 0" Foreground="Red" FontWeight="Bold" FontSize="14"/>
+            <TextBlock x:Name="TxtRezerve" Text="Rezervasyonlu: 0" Foreground="DarkOrange" FontWeight="Bold" FontSize="14"/>
+        </StackPanel>
+
+        <!-- Masa kartlarının gösterildiği kaydırılabilir alan -->
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <WrapPanel x:Name="MasaPaneli" Orientation="Horizontal"/>
+        </ScrollViewer>
+    </Grid>
+</Window>

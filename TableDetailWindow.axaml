@@ -1,0 +1,60 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="RestaurantManager.TableDetailWindow"
+        Title="Masa Detayı" Width="640" Height="620"
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="TxtBaslik" Grid.Row="0" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <!-- Kişi sayısı ve oturma bilgisi -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10" Spacing="5">
+            <TextBlock Text="Kişi Sayısı:" VerticalAlignment="Center"/>
+            <TextBox x:Name="TxtKisiSayisi" Width="50" Margin="0,0,20,0"/>
+            <TextBlock x:Name="TxtOturmaBilgisi" VerticalAlignment="Center" FontStyle="Italic"/>
+        </StackPanel>
+
+        <!-- Durum butonları: boş / dolu / rezervasyonlu işaretleme -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,10" Spacing="10">
+            <Button Content="Masayı Aç (Dolu)" Padding="10,5" Click="BtnMasayiAc_Click"/>
+            <Button Content="Rezerve Et" Padding="10,5" Click="BtnRezerveEt_Click"/>
+            <Button Content="Masayı Boşalt" Padding="10,5" Background="MistyRose" Click="BtnBosalt_Click"/>
+        </StackPanel>
+
+        <!-- Sipariş listesi: ne yemiş ne içmiş -->
+        <DataGrid x:Name="ListeSiparisler" Grid.Row="3" Margin="0,0,0,10"
+                  AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ürün" Binding="{Binding MenuItemName}" Width="200"/>
+                <DataGridTextColumn Header="Kategori" Binding="{Binding Category}" Width="90"/>
+                <DataGridTextColumn Header="Adet" Binding="{Binding Adet}" Width="60"/>
+                <DataGridTextColumn Header="Birim Fiyat" Binding="{Binding UnitPrice}" Width="90"/>
+                <DataGridTextColumn Header="Toplam" Binding="{Binding Toplam}" Width="90"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Yeni ürün ekleme alanı -->
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,0,0,10" Spacing="10">
+            <ComboBox x:Name="CmbKategori" Width="100" SelectionChanged="CmbKategori_SelectionChanged"/>
+            <ComboBox x:Name="CmbUrun" Width="180"/>
+            <TextBlock Text="Adet:" VerticalAlignment="Center"/>
+            <TextBox x:Name="TxtAdet" Width="40" Text="1"/>
+            <Button Content="Yemek/İçecek Ekle" Padding="8,5" Click="BtnUrunEkle_Click"/>
+            <Button Content="Seçileni Çıkar" Padding="8,5" Click="BtnUrunCikar_Click"/>
+        </StackPanel>
+
+        <!-- Genel toplam ve kapat -->
+        <DockPanel Grid.Row="5">
+            <TextBlock x:Name="TxtGenelToplam" Text="Genel Toplam: 0.00 TL" FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
+            <Button Content="Kapat" Padding="18,6" DockPanel.Dock="Right" HorizontalAlignment="Right" Click="BtnKapat_Click"/>
+        </DockPanel>
+    </Grid>
+</Window>

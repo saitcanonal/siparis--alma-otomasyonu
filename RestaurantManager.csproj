@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RollForward>LatestMajor</RollForward>
+    <Nullable>enable</Nullable>
+    <RootNamespace>RestaurantManager</RootNamespace>
+    <AssemblyName>RestaurantManager</AssemblyName>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+
+  <!--
+    NOT: Bu proje artık Avalonia UI kullanıyor (WPF değil).
+    Avalonia, WPF'e çok benzeyen (aynı XAML mantığı) ama Windows, macOS
+    ve Linux'ta çalışan bir arayüz kütüphanesidir. Bu sayede proje
+    MacBook'ta VS Code ile normal şekilde çalıştırılabilir.
+  -->
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.*" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.*" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.*" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.*" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.*" />
+  </ItemGroup>
+
+</Project>

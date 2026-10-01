@@ -1,0 +1,12 @@
+{
+  "name": "restaurant-manager-web",
+  "version": "1.0.0",
+  "description": "RestaurantManager masaustu uygulamasinin (TableService/MenuService) web backend + panel arayuzu.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

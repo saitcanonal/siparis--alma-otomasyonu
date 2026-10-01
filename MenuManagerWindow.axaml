@@ -1,0 +1,40 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="RestaurantManager.MenuManagerWindow"
+        Title="Menü Yönetimi" Width="580" Height="560"
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid x:Name="ListeMenu" Grid.Row="0" Margin="0,0,0,10"
+                  AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal"
+                  SelectionChanged="ListeMenu_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ürün Adı" Binding="{Binding Name}" Width="230"/>
+                <DataGridTextColumn Header="Kategori" Binding="{Binding Category}" Width="120"/>
+                <DataGridTextColumn Header="Fiyat (TL)" Binding="{Binding Price}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Ürün ekleme / düzenleme alanı -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,12" Spacing="5">
+            <TextBlock Text="Ad:" VerticalAlignment="Center"/>
+            <TextBox x:Name="TxtAd" Width="150" Margin="0,0,15,0"/>
+            <TextBlock Text="Kategori:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="CmbKategori" Width="100" Margin="0,0,15,0"/>
+            <TextBlock Text="Fiyat:" VerticalAlignment="Center"/>
+            <TextBox x:Name="TxtFiyat" Width="70"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+            <Button Content="Yeni Ekle" Padding="12,6" Click="BtnEkle_Click"/>
+            <Button Content="Güncelle" Padding="12,6" Click="BtnGuncelle_Click"/>
+            <Button Content="Sil" Padding="12,6" Background="MistyRose" Click="BtnSil_Click"/>
+            <Button Content="Kapat" Padding="12,6" Click="BtnKapat_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
